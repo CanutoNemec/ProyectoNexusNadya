@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 🎓 Sistema de Gestión Académica "NEXUS"
 
