@@ -1,94 +1,95 @@
-Sistema de Gestión Académica "NEXUS" 🎓
-Este proyecto es una aplicación de consola nativa para Windows desarrollada en C++. Funciona como una interfaz robusta para una base de datos MySQL, permitiendo la gestión integral de alumnos, seguimiento de calificaciones y actualizaciones automáticas de estado.
+---
 
-🚀 Características Detalladas
-Buscador Individual: Recupera la ficha técnica completa de un alumno (Nombre, contacto, promedio y estado) mediante su ID único desde la base de datos.
+```markdown
+# 🎓 Sistema de Gestión Académica "NEXUS"
 
-Cuadro de Honor (Ranking): Genera un reporte dinámico con los 5 mejores promedios de la institución utilizando filtros de ordenamiento SQL.
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
-Filtro de Rendimiento Binario:
+Este proyecto es una herramienta de consola diseñada para **Windows** que integra **C++** con **MySQL**. Permite la administración eficiente de registros estudiantiles, procesamiento de calificaciones y reportes de rendimiento académico en tiempo real.
 
-Aprobados: Estudiantes con nota mayor o igual a 5.
+---
 
-Reprobados: Listado automático de estudiantes con nota menor a 5.
+## 🚀 Características del Sistema
 
-Gestión de Datos (CRUD):
+| Módulo | Descripción |
+| :--- | :--- |
+| **🔍 Buscador** | Localización instantánea de alumnos por ID único. |
+| **🏆 Cuadro de Honor** | Reporte automático del Top 5 de mejores promedios. |
+| **📊 Filtros** | Clasificación binaria: **Aprobados** (≥ 5) y **Reprobados** (< 5). |
+| **✏️ Editor CRUD** | Actualización de notas con recálculo de estado y cambio de contactos. |
 
-Modificación de Calificaciones: Al actualizar una nota, el sistema recalcula el estado instantáneamente en la base de datos.
+---
 
-Actualización de Contacto: Permite modificar el número de celular del alumno de forma directa.
+## 🛠️ Requisitos Previos (Entorno Windows)
 
-🛠️ Requisitos del Sistema (Solo Windows)
-Para que este proyecto funcione en tu entorno local, necesitas tener instalado:
+Para compilar y ejecutar este sistema, tu estación de trabajo debe contar con:
+* **Compilador:** MinGW-w64 (g++) debidamente agregado al PATH del sistema.
+* **Gestor de BD:** MySQL Server 8.0 local.
+* **Conector:** MySQL Connector/C (API de C para el enlace de datos).
 
-Compilador: MinGW-w64 (g++) configurado correctamente en el PATH del sistema.
+---
 
-Servidor de Base de Datos: MySQL Server 8.0 instalado y activo.
+## 📦 1. Configuración de Seguridad (Credenciales)
 
-Librería de Enlace: API de C para MySQL (incluida en la instalación de MySQL Server).
+Por norma de seguridad (buenas prácticas), los datos de acceso no se suben al repositorio. **Sigue estos pasos:**
 
-📦 1. Configuración de Credenciales (Seguridad Local)
-Por motivos de seguridad y cumpliendo con las buenas prácticas de ingeniería, las credenciales de acceso a la base de datos están ignoradas por el repositorio (vía .gitignore).
+1. Crea el archivo `db_config.h` en la carpeta raíz.
+2. Inserta el siguiente código ajustando tus credenciales de MySQL:
 
-Debes crear manualmente el archivo de cabecera en la raíz del proyecto para permitir la conexión:
-
-Crea un archivo llamado db_config.h.
-
-Pega el siguiente bloque de código ajustando tus datos personales:
-
-C++
+```cpp
 #ifndef DB_CONFIG_H
 #define DB_CONFIG_H
 
 #define DB_HOST "127.0.0.1"
-#define DB_USER "root"          // Tu usuario de MySQL
-#define DB_PASS "tu_password"   // Tu contraseña personal de MySQL
+#define DB_USER "root"          // Tu usuario
+#define DB_PASS "tu_password"   // Tu contraseña real
 #define DB_NAME "sistema"
 
 #endif
-⚙️ 2. Instalación y Preparación del Entorno
-Paso A: Preparación de la Base de Datos
-Antes de ejecutar el programa, la estructura de datos debe existir en tu servidor local:
+```
 
-Abre MySQL Workbench.
+---
 
-Carga el archivo NEXUS.sql incluido en este repositorio.
+## ⚙️ 2. Instalación y Puesta en Marcha
 
-Ejecuta el script completo para crear la base de datos sistema, la tabla alumnos y cargar los datos iniciales.
+### Paso A: Despliegue de Base de Datos
+* Abre **MySQL Workbench**.
+* Ejecuta el archivo `NEXUS.sql` adjunto en este repo. Esto creará la arquitectura de tablas y los registros iniciales necesarios.
 
-Paso B: El Driver de Comunicación (DLL)
-C++ necesita un "puente" físico para hablar con MySQL en Windows.
+### Paso B: Integración del Driver (DLL)
+C++ requiere un driver dinámico para comunicarse con MySQL en Windows:
+1. Localiza el archivo `libmysql.dll` en: `C:\Program Files\MySQL\MySQL Server 8.0\lib`.
+2. **Cópialo y pégalo** en la carpeta donde está tu `main.cpp`.
+   > ⚠️ **Nota:** Sin este archivo, el programa lanzará un error de ejecución inmediatamente.
 
-Dirígete a la carpeta de instalación de tu MySQL (usualmente C:\Program Files\MySQL\MySQL Server 8.0\lib).
+---
 
-Localiza el archivo llamado libmysql.dll.
+## 🖥️ 3. Compilación y Ejecución
 
-Cópialo y pégalo en la carpeta donde tienes tu código fuente (main.cpp). Sin este archivo, el ejecutable dará un error de sistema al intentar abrirse.
+Abre una terminal en el directorio del proyecto y ejecuta los siguientes comandos de ingeniería:
 
-🖥️ 3. Proceso de Compilación y Ejecución
-La compilación en Windows requiere enlazar las librerías externas de MySQL. Usa la terminal de VS Code o el CMD con el siguiente comando:
-
-Comando de Compilación (Vinculación Dinámica):
-PowerShell
+### 🔨 Compilación (Vinculación de Librerías)
+```powershell
 g++ main.cpp -o main.exe -I"C:/Program Files/MySQL/MySQL Server 8.0/include" -L"C:/Program Files/MySQL/MySQL Server 8.0/lib" -lmysql
--I: Indica dónde están los manuales de funciones (include).
+```
 
--L: Indica dónde están los componentes físicos (lib).
-
--lmysql: Activa específicamente el conector de MySQL.
-
-Comando de Ejecución:
-Una vez que veas el archivo main.exe en tu carpeta, lánzalo con:
-
-PowerShell
+### 🏃 Ejecución
+```powershell
 .\main.exe
-📂 Estructura del Repositorio
-main.cpp: Código fuente principal con la lógica de control.
+```
 
-NEXUS.sql: Script de base de datos para despliegue rápido.
+---
 
-.gitignore: Filtro de seguridad para evitar subida de binarios y contraseñas.
+## 📂 Estructura del Repositorio
+```bash
+├── main.cpp        # Lógica de control y queries SQL
+├── NEXUS.sql       # Script de creación de la base de datos
+├── .gitignore      # Exclusión de binarios y datos sensibles
+├── libmysql.dll    # Driver de conexión para Windows
+└── README.md       # Documentación técnica (este archivo)
+```
 
-libmysql.dll: Conector necesario para la ejecución.
+---
 
-README.md: Documentación completa del proyecto.
