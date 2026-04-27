@@ -5,7 +5,7 @@ Este proyecto es una aplicación de consola desarrollada en **C++** que actúa c
 ## 🚀 Características
 - **Buscador Individual**: Consulta la ficha completa de un alumno por su ID.
 - **Cuadro de Honor**: Visualiza el Top 5 de los mejores promedios.
-- **Filtro de Reprobados**: Lista automáticamente a los alumnos con nota menor a 4.
+- **Filtro de Reprobados**: Lista automáticamente a los alumnos con nota menor a 5.
 - **Actualización Dinámica**: 
   - Modificación de notas con cálculo de estado automático (Aprobado/Reprobado).
   - Actualización de números de contacto.
