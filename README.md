@@ -1,10 +1,6 @@
 ```markdown
 # 🎓 Sistema de Gestión Académica "NEXUS"
 
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-
 Este proyecto es una herramienta de consola diseñada para **Windows** que integra **C++** con **MySQL**. Permite la administración eficiente de registros estudiantiles, procesamiento de calificaciones y reportes de rendimiento académico en tiempo real.
 
 ---
