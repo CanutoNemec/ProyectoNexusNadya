@@ -1,0 +1,10 @@
+# Configuración local (Contiene tu contraseña)
+db_config.h
+
+# Archivos ejecutables y de compilación
+*.exe
+*.o
+*.out
+
+# Carpetas de VS Code
+.vscode/
