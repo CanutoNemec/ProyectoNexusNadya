@@ -28,3 +28,18 @@ Por motivos de seguridad, las credenciales de la base de datos no están incluid
 #define DB_NAME "sistema"
 
 #endif
+
+## 🛠️ Instalación y Compilación (Detalle Técnico)
+
+Para que el sistema funcione, se debe seguir este proceso de integración:
+
+### 1. Preparación del Entorno (Instalación)
+- **Base de Datos**: Importar el archivo `NEXUS.sql` en MySQL Server para crear la estructura de tablas.
+- **Dependencias**: Es vital que el archivo `libmysql.dll` esté en la misma carpeta que el ejecutable para servir como driver de comunicación.
+- **Configuración**: Crear manualmente `db_config.h` con las credenciales locales de acceso.
+
+### 2. Proceso de Compilación
+Se utiliza vinculación dinámica con el compilador `g++`. El comando de compilación debe incluir los flags de inclusión (`-I`) y enlace (`-L`) apuntando a los directorios de instalación de MySQL:
+
+```bash
+g++ main.cpp -o main.exe -I"C:/Program Files/MySQL/MySQL Server 8.0/include" -L"C:/Program Files/MySQL/MySQL Server 8.0/lib" -lmysql
