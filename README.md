@@ -28,8 +28,9 @@ Por motivos de seguridad, las credenciales de la base de datos no están incluid
 #define DB_NAME "sistema"
 
 #endif
+```
 
-## 🛠️ Instalación y Compilación (Detalle Técnico)
+# 🛠️ Instalación y Compilación (Detalle Técnico)
 
 Para que el sistema funcione, se debe seguir este proceso de integración:
 
